@@ -43,12 +43,15 @@ class AddContact extends Component {
             phone,
         };
 
-        dispatch({type: 'ADD_CONTACT', payload: newContact})
+        dispatch({type: 'ADD_CONTACT', payload: newContact});
+        
         this.setState({
             name: '',
             email: '',
             phone: ''
-        })
+        });
+
+        this.props.history.push('/');
     }
 
     render() {

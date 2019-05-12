@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types'
 import {Consumer} from '../../context';
 import axios from 'axios';
@@ -19,6 +20,13 @@ class Contact extends Component {
     const {status} = await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
     if(status === 200)
       dispatch({type: 'DELETE_CONTACT', payload: id});
+  };
+
+  onEditClick = async (id, dispatch) => {
+    console.log('UPPPPDATEE')
+    const {status} = await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+    if(status === 200)
+      dispatch({type: 'UPDATE_CONTACT', payload: id});
   };
 
   render() {
@@ -44,6 +52,14 @@ class Contact extends Component {
                       'right', color: 'red'}}
                       onClick={this.onDeleteClick.bind(this, id, dispatch)}
                       />
+                      <Link to={`contact/edit/${id}`} >
+                          <i className="fas fa-pencil-alt"
+                           style={{
+                            cursor: 'pointer', 
+                            float: 'right', 
+                            color: 'black',
+                            marginRight: '1rem'}}></i>
+                      </Link>
                     </h4>
                     {showContactInfo ? (
                     <ul className='list-group'>

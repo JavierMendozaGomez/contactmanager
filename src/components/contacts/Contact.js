@@ -22,13 +22,6 @@ class Contact extends Component {
       dispatch({type: 'DELETE_CONTACT', payload: id});
   };
 
-  onEditClick = async (id, dispatch) => {
-    console.log('UPPPPDATEE')
-    const {status} = await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
-    if(status === 200)
-      dispatch({type: 'UPDATE_CONTACT', payload: id});
-  };
-
   render() {
     const {showContactInfo} = this.state;
     const {contact} = this.props;
